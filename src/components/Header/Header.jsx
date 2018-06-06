@@ -66,20 +66,32 @@ const styles = {
 };
 
 function Header(props) {
-    const { classes, color } = props;
+    const { classes, color, rightLinks } = props;
     const appBarClasses = classNames({
         [classes.appBar]: true,
         [classes[color]]: color
     });
     return (
         <AppBar className={appBarClasses}>
-            <Toolbar className={classes.container}>Title</Toolbar>
+            <Toolbar className={classes.container}>{rightLinks}</Toolbar>
         </AppBar>
     );
 }
 
 Header.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    color: PropTypes.oneOf([
+        "primary",
+        "info",
+        "success",
+        "warning",
+        "danger",
+        "transparent",
+        "white",
+        "rose",
+        "dark"
+    ]),
+    rightLinks: PropTypes.node
 };
 
 export default withStyles(styles)(Header);
