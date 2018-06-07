@@ -4,9 +4,11 @@
 // Core Components
 @import "core/misc";
 
-// Core Plugins
+@import "sections";
 
-// @import "plugins/plugin-datetime-picker";
+@import "pages/profilePage";
+
+// Core Plugins
 @import "plugins/plugin-nouislider";
 @import "plugins/plugin-react-datetime";
 @import "plugins/plugin-react-slick";

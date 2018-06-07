@@ -8,7 +8,7 @@ import profilePageStyle from "assets/jss/domi/views/profilePage.jsx";
 
 const ProfilePage = ({ classes, ...rest }) => {
     return (
-        <div>
+        <div className="profile-page">
             <Header
                 color="transparent"
                 brand="Dominique Krämer"
@@ -16,7 +16,19 @@ const ProfilePage = ({ classes, ...rest }) => {
                 fixed
                 {...rest}
             />
-            <Parallax filter image={require("assets/img/bg5.jpg")} />
+            <div
+                className="page-header page-header-small"
+                filter-color="orange"
+            >
+                <Parallax filter image={require("assets/img/bg5.jpg")} />
+                <div className="container">
+                    <div className="content-center">
+                        <div className="photo-container">
+                            <img src={require("assets/img/ryan.jpg")} alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

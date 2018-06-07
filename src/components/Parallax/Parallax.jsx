@@ -52,8 +52,7 @@ class Parallax extends React.Component {
         });
         return (
             <div
-                filter-color="orange"
-                className={parallaxClasses}
+                className={"page-header-image"}
                 style={{
                     ...style,
                     backgroundImage: `url(${image})`,
