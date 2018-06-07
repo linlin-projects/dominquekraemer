@@ -4,10 +4,10 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Button from "@material-ui/core/Button";
 
 // @material-ui/icons
 import { CloudDownload } from "@material-ui/icons";
+import Button from "components/CustomButtons/Button.jsx";
 
 import headerLinksStyle from "assets/jss/domi/components/headerLinksStyle";
 
@@ -19,7 +19,6 @@ function HeaderLinks({ ...props }) {
                 <Button
                     href="#"
                     color="transparent"
-                    target="_blank"
                     className={classes.navLink}
                 >
                     <CloudDownload className={classes.icons} /> Download

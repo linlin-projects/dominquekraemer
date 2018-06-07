@@ -2,7 +2,13 @@
 // // // Header styles
 // #############################
 
-import { defaultFont, container } from "assets/jss/domi.jsx";
+import {
+    drawerWidth,
+    transition,
+    boxShadow,
+    defaultFont,
+    container
+} from "assets/jss/domi.jsx";
 
 const headerStyle = {
     appBar: {
@@ -51,6 +57,45 @@ const headerStyle = {
             color: "inherit",
             background: "transparent"
         }
+    },
+    appResponsive: {
+        margin: "20px 10px"
+        // width: drawerWidth,
+    },
+    drawerPaper: {
+        border: "none",
+        bottom: "0",
+        transitionProperty: "top, bottom, width",
+        transitionDuration: ".2s, .2s, .35s",
+        transitionTimingFunction: "linear, linear, ease",
+        width: drawerWidth,
+        ...boxShadow,
+        position: "fixed",
+        display: "block",
+        top: "0",
+        height: "100vh",
+        right: "0",
+        left: "auto",
+        visibility: "visible",
+        overflowY: "visible",
+        borderTop: "none",
+        textAlign: "left",
+        paddingRight: "0px",
+        paddingLeft: "0",
+        ...transition
+        // "&:before,&:after": {
+        //   position: "absolute",
+        //   zIndex: "3",
+        //   width: "100%",
+        //   height: "100%",
+        //   content: '""',
+        //   display: "block",
+        //   top: "0"
+        // },
+        // "&:after": {
+        //   background: "#000",
+        //   opacity: ".8"
+        // }
     }
 };
 
