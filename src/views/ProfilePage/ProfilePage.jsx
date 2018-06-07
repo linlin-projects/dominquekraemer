@@ -4,7 +4,11 @@ import HeaderLinks from "components/Header/HeaderLinks";
 
 const ProfilePage = () => (
     <div>
-        <Header color="transparent" rightLinks={<HeaderLinks />} />
+        <Header
+            color="transparent"
+            brand="Dominique Krämer"
+            rightLinks={<HeaderLinks />}
+        />
     </div>
 );
 

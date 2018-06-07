@@ -6,74 +6,37 @@ import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-
-const conatinerFluid = {
-    paddingRight: "15px",
-    paddingLeft: "15px",
-    marginRight: "auto",
-    marginLeft: "auto",
-    width: "100%"
-};
-const container = {
-    ...conatinerFluid,
-    "@media (min-width: 576px)": {
-        maxWidth: "540px"
-    },
-    "@media (min-width: 768px)": {
-        maxWidth: "720px"
-    },
-    "@media (min-width: 992px)": {
-        maxWidth: "960px"
-    },
-    "@media (min-width: 1200px)": {
-        maxWidth: "1140px"
-    }
-};
-
-const styles = {
-    appBar: {
-        display: "flex",
-        border: "0",
-        borderRadius: "3px",
-        padding: "0.625rem 0",
-        marginBottom: "20px",
-        color: "#555",
-        width: "100%",
-        backgroundColor: "#fff",
-        boxShadow:
-            "0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15)",
-        transition: "all 150ms ease 0s",
-        alignItems: "center",
-        flexFlow: "row nowrap",
-        justifyContent: "flex-start",
-        position: "relative"
-    },
-    transparent: {
-        backgroundColor: "red", //"transparent !important",
-        boxShadow: "none",
-        paddingTop: "25px",
-        color: "#FFFFFF"
-    },
-    container: {
-        ...container,
-        minHeight: "50px",
-        flex: "1",
-        alignItems: "center",
-        justifyContent: "space-between",
-        display: "flex",
-        flexWrap: "nowrap"
-    }
-};
+import Button from "@material-ui/core/Button";
+import Hidden from "@material-ui/core/Hidden";
+import IconButton from "@material-ui/core/IconButton";
+// @material-ui/icons
+import Menu from "@material-ui/icons/Menu";
+import headerStyle from "assets/jss/domi/components/headerStyle.jsx";
 
 function Header(props) {
-    const { classes, color, rightLinks } = props;
+    const { classes, color, rightLinks, brand } = props;
     const appBarClasses = classNames({
         [classes.appBar]: true,
         [classes[color]]: color
     });
+    const brandComponent = (
+        <Button href="#" className={classes.title}>
+            {brand}
+        </Button>
+    );
     return (
         <AppBar className={appBarClasses}>
-            <Toolbar className={classes.container}>{rightLinks}</Toolbar>
+            <Toolbar className={classes.container}>
+                <div className={classes.flex}>{brandComponent}</div>
+                <Hidden smDown implementation="css">
+                    {rightLinks}
+                </Hidden>
+                <Hidden mdUp>
+                    <IconButton color="inherit" aria-label="open drawer">
+                        <Menu />
+                    </IconButton>
+                </Hidden>
+            </Toolbar>
         </AppBar>
     );
 }
@@ -91,7 +54,8 @@ Header.propTypes = {
         "rose",
         "dark"
     ]),
-    rightLinks: PropTypes.node
+    rightLinks: PropTypes.node,
+    brand: PropTypes.string
 };
 
-export default withStyles(styles)(Header);
+export default withStyles(headerStyle)(Header);
