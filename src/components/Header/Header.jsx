@@ -29,10 +29,11 @@ class Header extends Component {
     };
 
     render() {
-        const { classes, color, rightLinks, brand } = this.props;
+        const { classes, color, rightLinks, brand, fixed } = this.props;
         const appBarClasses = classNames({
             [classes.appBar]: true,
-            [classes[color]]: color
+            [classes[color]]: color,
+            [classes.fixed]: fixed
         });
         const brandComponent = (
             <Button href="#" className={classes.title}>

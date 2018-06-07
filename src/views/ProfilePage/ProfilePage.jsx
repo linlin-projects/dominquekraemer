@@ -1,15 +1,24 @@
 import React from "react";
 import Header from "components/Header/Header";
 import HeaderLinks from "components/Header/HeaderLinks";
+import { withStyles } from "@material-ui/core/styles";
+import Parallax from "components/Parallax/Parallax.jsx";
 
-const ProfilePage = () => (
-    <div>
-        <Header
-            color="transparent"
-            brand="Dominique Krämer"
-            rightLinks={<HeaderLinks />}
-        />
-    </div>
-);
+import profilePageStyle from "assets/jss/domi/views/profilePage.jsx";
 
-export default ProfilePage;
+const ProfilePage = ({ classes, ...rest }) => {
+    return (
+        <div>
+            <Header
+                color="transparent"
+                brand="Dominique Krämer"
+                rightLinks={<HeaderLinks />}
+                fixed
+                {...rest}
+            />
+            <Parallax filter image={require("assets/img/bg5.jpg")} />
+        </div>
+    );
+};
+
+export default withStyles(profilePageStyle)(ProfilePage);

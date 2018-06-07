@@ -28,8 +28,14 @@ const headerStyle = {
         justifyContent: "flex-start",
         position: "relative"
     },
+    absolute: {
+        position: "absolute"
+    },
+    fixed: {
+        position: "fixed"
+    },
     transparent: {
-        backgroundColor: "red", //"transparent !important",
+        backgroundColor: "transparent !important",
         boxShadow: "none",
         paddingTop: "25px",
         color: "#FFFFFF"
