@@ -6,6 +6,8 @@ import { Router, Route, Switch } from "react-router";
 import registerServiceWorker from "./registerServiceWorker";
 import indexRoutes from "./routes/index.jsx";
 
+import "assets/scss/domi.css";
+
 var hist = createBrowserHistory();
 
 ReactDOM.render(

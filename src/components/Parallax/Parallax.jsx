@@ -52,6 +52,7 @@ class Parallax extends React.Component {
         });
         return (
             <div
+                filter-color="orange"
                 className={parallaxClasses}
                 style={{
                     ...style,
