@@ -1,14 +1,18 @@
-@import "core/variables";
-@import "core/mixins";
+@import "domi/variables";
+@import "domi/mixins";
 
 // Core Components
-@import "core/misc";
+@import "domi/misc";
+@import "domi/typography";
 
-@import "sections";
+// components
+@import "domi/images";
 
-@import "pages/profilePage";
+// pages and sections
+@import "domi/sections";
+@import "domi/pages/profilePage";
 
-// Core Plugins
-@import "plugins/plugin-nouislider";
-@import "plugins/plugin-react-datetime";
-@import "plugins/plugin-react-slick";
+// Plugins CSS
+@import "domi/plugins/plugin-nouislider";
+@import "domi/plugins/plugin-datepicker";
+@import "domi/plugins/plugin-bootstrap-switch";

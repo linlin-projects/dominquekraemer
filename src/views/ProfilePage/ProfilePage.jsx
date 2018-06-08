@@ -11,7 +11,7 @@ const ProfilePage = ({ classes, ...rest }) => {
         <div className="profile-page">
             <Header
                 color="transparent"
-                brand="Dominique Krämer"
+                brand="DK Design Studio"
                 rightLinks={<HeaderLinks />}
                 fixed
                 {...rest}
@@ -26,6 +26,8 @@ const ProfilePage = ({ classes, ...rest }) => {
                         <div className="photo-container">
                             <img src={require("assets/img/ryan.jpg")} alt="" />
                         </div>
+                        <h3 className="title">Dominique Krämer</h3>
+                        <p className="category">Architect</p>
                     </div>
                 </div>
             </div>
