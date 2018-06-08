@@ -5,8 +5,30 @@
 @import "domi/misc";
 @import "domi/typography";
 
+// Core CSS
+@import "domi/buttons";
+@import "domi/inputs";
+@import "domi/checkboxes-radio";
+@import "domi/progress";
+@import "domi/badges";
+@import "domi/pagination";
+@import "domi/typography";
+@import "domi/misc";
+@import "domi/pills";
+
 // components
+@import "domi/social-buttons";
+@import "domi/tabs";
+@import "domi/navbar";
+@import "domi/dropdown";
+@import "domi/alerts";
 @import "domi/images";
+@import "domi/popups";
+@import "domi/nucleo-outline";
+@import "domi/modals";
+@import "domi/carousel";
+@import "domi/cards";
+@import "domi/footers";
 
 // pages and sections
 @import "domi/sections";
@@ -16,3 +38,5 @@
 @import "domi/plugins/plugin-nouislider";
 @import "domi/plugins/plugin-datepicker";
 @import "domi/plugins/plugin-bootstrap-switch";
+
+@import "domi/responsive";

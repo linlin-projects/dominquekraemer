@@ -28,6 +28,37 @@ class Header extends Component {
         this.setState({ mobileOpen: !this.state.mobileOpen });
     };
 
+    componentDidMount() {
+        if (this.props.changeColorOnScroll) {
+            window.addEventListener("scroll", this.headerColorChange);
+        }
+    }
+
+    headerColorChange = () => {
+        const { classes, color, changeColorOnScroll } = this.props;
+        const windowsScrollTop = window.pageYOffset;
+        if (windowsScrollTop > changeColorOnScroll.height) {
+            document.body
+                .getElementsByTagName("header")[0]
+                .classList.remove(classes[color]);
+            document.body
+                .getElementsByTagName("header")[0]
+                .classList.add(classes[changeColorOnScroll.color]);
+        } else {
+            document.body
+                .getElementsByTagName("header")[0]
+                .classList.add(classes[color]);
+            document.body
+                .getElementsByTagName("header")[0]
+                .classList.remove(classes[changeColorOnScroll.color]);
+        }
+    };
+
+    componentWillUnmount() {
+        if (this.props.changeColorOnScroll) {
+            window.removeEventListener("scroll", this.headerColorChange);
+        }
+    }
     render() {
         const { classes, color, rightLinks, brand, fixed } = this.props;
         const appBarClasses = classNames({
