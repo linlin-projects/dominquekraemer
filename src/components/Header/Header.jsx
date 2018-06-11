@@ -1,20 +1,6 @@
 import React, { Component } from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
-// material-ui components
-import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import Hidden from "@material-ui/core/Hidden";
-import Drawer from "@material-ui/core/Drawer";
-// @material-ui/icons
-import Menu from "@material-ui/icons/Menu";
-// core components
-import headerStyle from "assets/jss/domi/components/headerStyle.jsx";
 
 class Header extends Component {
     constructor(props) {
@@ -24,33 +10,40 @@ class Header extends Component {
         };
     }
 
-    handleDrawerToggle = () => {
-        this.setState({ mobileOpen: !this.state.mobileOpen });
+    handleDrawerToggle = isDrawer => {
+        this.setState({
+            mobileOpen: !this.state.mobileOpen
+        });
+        if (!this.state.mobileOpen) {
+            document.getElementById("root").classList.add("nav-open");
+        } else {
+            document.getElementById("root").classList.remove("nav-open");
+        }
     };
 
+    closeDrawerToggle = () => {
+        if (this.state.mobileOpen) {
+            document.getElementById("root").classList.remove("nav-open");
+        }
+    };
     componentDidMount() {
         if (this.props.changeColorOnScroll) {
             window.addEventListener("scroll", this.headerColorChange);
         }
+        //document.body.addEventListener("click", this.handleDrawerToggle);
     }
 
     headerColorChange = () => {
-        const { classes, color, changeColorOnScroll } = this.props;
+        const { changeColorOnScroll } = this.props;
         const windowsScrollTop = window.pageYOffset;
         if (windowsScrollTop > changeColorOnScroll.height) {
             document.body
-                .getElementsByTagName("header")[0]
-                .classList.remove(classes[color]);
-            document.body
-                .getElementsByTagName("header")[0]
-                .classList.add(classes[changeColorOnScroll.color]);
+                .getElementsByTagName("nav")[0]
+                .classList.remove("navbar-transparent");
         } else {
             document.body
-                .getElementsByTagName("header")[0]
-                .classList.add(classes[color]);
-            document.body
-                .getElementsByTagName("header")[0]
-                .classList.remove(classes[changeColorOnScroll.color]);
+                .getElementsByTagName("nav")[0]
+                .classList.add("navbar-transparent");
         }
     };
 
@@ -58,56 +51,147 @@ class Header extends Component {
         if (this.props.changeColorOnScroll) {
             window.removeEventListener("scroll", this.headerColorChange);
         }
+        //document.body.removeEventListener("click", this.handleDrawerToggle);
     }
     render() {
-        const { classes, color, rightLinks, brand, fixed } = this.props;
-        const appBarClasses = classNames({
-            [classes.appBar]: true,
-            [classes[color]]: color,
-            [classes.fixed]: fixed
-        });
-        const brandComponent = (
-            <Button href="#" className={classes.title}>
-                {brand}
-            </Button>
-        );
         return (
-            <AppBar className={appBarClasses}>
-                <Toolbar className={classes.container}>
-                    <div className={classes.flex}>{brandComponent}</div>
-                    <Hidden smDown implementation="css">
-                        {rightLinks}
-                    </Hidden>
-                    <Hidden mdUp>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={this.handleDrawerToggle}
+            <nav
+                className="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent "
+                color-on-scroll="400"
+            >
+                <div className="container">
+                    <div className="dropdown button-dropdown">
+                        <a
+                            href="#pablo"
+                            className="dropdown-toggle"
+                            id="navbarDropdown"
+                            data-toggle="dropdown"
                         >
-                            <Menu />
-                        </IconButton>
-                    </Hidden>
-                </Toolbar>
-                <Hidden mdUp implementation="css">
-                    <Drawer
-                        variant="temporary"
-                        anchor="right"
-                        open={this.state.mobileOpen}
-                        classes={{ paper: classes.drawerPaper }}
-                        onClose={this.handleDrawerToggle}
-                    >
-                        <div className={classes.appResponsive}>
-                            {rightLinks}
+                            <span className="button-bar" />
+                            <span className="button-bar" />
+                            <span className="button-bar" />
+                        </a>
+                        <div
+                            className="dropdown-menu"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <a className="dropdown-header">Dropdown header</a>
+                            <a className="dropdown-item" href="/action">
+                                Action
+                            </a>
+                            <a className="dropdown-item" href="/anotherAction">
+                                Another action
+                            </a>
+                            <a className="dropdown-item" href="/somethingElse">
+                                Something else here
+                            </a>
+                            <div className="dropdown-divider" />
+                            <a className="dropdown-item" href="/separatedLink">
+                                Separated link
+                            </a>
+                            <div className="dropdown-divider" />
+                            <a className="dropdown-item" href="/moreLink">
+                                One more separated link
+                            </a>
                         </div>
-                    </Drawer>
-                </Hidden>
-            </AppBar>
+                    </div>
+                    <div className="navbar-translate">
+                        <a
+                            className="navbar-brand"
+                            href="/test"
+                            rel="tooltip"
+                            title="Designed by Invision. Coded by Creative Tim"
+                            data-placement="bottom"
+                        >
+                            DK Design Studio
+                        </a>
+                        <button
+                            className="navbar-toggler navbar-toggler"
+                            type="button"
+                            data-toggle="collapse"
+                            data-target="#navigation"
+                            aria-controls="navigation-index"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                            onClick={() =>
+                                this.handleDrawerToggle(!this.state.mobileOpen)
+                            }
+                        >
+                            <span className="navbar-toggler-bar bar1" />
+                            <span className="navbar-toggler-bar bar2" />
+                            <span className="navbar-toggler-bar bar3" />
+                        </button>
+                    </div>
+                    <div
+                        className="collapse navbar-collapse justify-content-end"
+                        id="navigation"
+                        data-nav-image={require("assets/img/blurred-image-1.jpg")}
+                    >
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/back">
+                                    Back to Kit
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/issue">
+                                    Have an issue?
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a
+                                    className="nav-link"
+                                    rel="tooltip"
+                                    title="Follow us on Twitter"
+                                    data-placement="bottom"
+                                    href="/twitter"
+                                    target="_blank"
+                                >
+                                    <i className="fa fa-twitter" />
+                                    <p className="d-lg-none d-xl-none">
+                                        Twitter
+                                    </p>
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a
+                                    className="nav-link"
+                                    rel="tooltip"
+                                    title="Like us on Facebook"
+                                    data-placement="bottom"
+                                    href="/facebook"
+                                    target="_blank"
+                                >
+                                    <i className="fa fa-facebook-square" />
+                                    <p className="d-lg-none d-xl-none">
+                                        Facebook
+                                    </p>
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a
+                                    className="nav-link"
+                                    rel="tooltip"
+                                    title="Follow us on Instagram"
+                                    data-placement="bottom"
+                                    href="/instagram"
+                                    target="_blank"
+                                >
+                                    <i className="fa fa-instagram" />
+                                    <p className="d-lg-none d-xl-none">
+                                        Instagram
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         );
     }
 }
 
 Header.propTypes = {
-    classes: PropTypes.object.isRequired,
     color: PropTypes.oneOf([
         "primary",
         "info",
@@ -123,4 +207,4 @@ Header.propTypes = {
     brand: PropTypes.string
 };
 
-export default withStyles(headerStyle)(Header);
+export default Header;

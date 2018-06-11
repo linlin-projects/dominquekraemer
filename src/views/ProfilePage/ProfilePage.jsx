@@ -156,7 +156,8 @@ const ProfilePage = ({ classes, ...rest }) => {
                                         <div className="col-md-6">
                                             <img
                                                 src={require("assets/img/bg6.jpg")}
-                                                class="img-raised"
+                                                className="img-raised"
+                                                alt=""
                                             />
                                             <img
                                                 src={require("assets/img/bg11.jpg")}
@@ -189,7 +190,8 @@ const ProfilePage = ({ classes, ...rest }) => {
                                         <div className="col-md-6">
                                             <img
                                                 src={require("assets/img/bg3.jpg")}
-                                                class="img-raised"
+                                                className="img-raised"
+                                                alt=""
                                             />
                                             <img
                                                 src={require("assets/img/bg8.jpg")}

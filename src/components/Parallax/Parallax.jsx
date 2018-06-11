@@ -1,6 +1,4 @@
 import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // material-ui components
@@ -35,21 +33,8 @@ class Parallax extends React.Component {
         });
     }
     render() {
-        const {
-            classes,
-            filter,
-            className,
-            children,
-            style,
-            image,
-            small
-        } = this.props;
-        const parallaxClasses = classNames({
-            [classes.parallax]: true,
-            [classes.filter]: filter,
-            [classes.small]: small,
-            [className]: className !== undefined
-        });
+        const { children, style, image } = this.props;
+
         return (
             <div
                 className={"page-header-image"}
